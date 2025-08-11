@@ -20,7 +20,7 @@ class AmazonReviewAnalyzer {
     panel.id = 'review-analyzer-panel';
     panel.innerHTML = `
       <div class="ra-header">
-        <h3>🔍 Review Analysis</h3>
+        <h3> Review Analysis</h3>
         <div class="ra-status">Analyzing...</div>
       </div>
       <div class="ra-content">
@@ -30,19 +30,19 @@ class AmazonReviewAnalyzer {
         </div>
         <div class="ra-ai-section" id="ai-analysis-section" style="display: none;">
           <div class="ra-ai-header">
-            <h4>🤖 AI Analysis</h4>
+            <h4> AI Analysis</h4>
             <div class="ra-ai-score" id="ai-authenticity-score">--</div>
           </div>
           <div class="ra-ai-content" id="ai-analysis-content">
-            <div class="ra-ai-loading">🔄 Getting AI insights...</div>
+            <div class="ra-ai-loading"> Getting AI insights...</div>
           </div>
         </div>
         <div class="ra-details" id="analysis-details">
-          <div class="ra-loading">🔄 Analyzing reviews...</div>
+          <div class="ra-loading"> Analyzing reviews...</div>
         </div>
         <div class="ra-controls">
-          <button id="refresh-analysis" class="ra-button">🔄 Refresh Analysis</button>
-          <button id="toggle-ai" class="ra-button ra-ai-toggle">🤖 AI Analysis</button>
+          <button id="refresh-analysis" class="ra-button"> Refresh Analysis</button>
+          <button id="toggle-ai" class="ra-button ra-ai-toggle"> AI Analysis</button>
         </div>
       </div>
     `;
@@ -278,14 +278,14 @@ class AmazonReviewAnalyzer {
     
     if (aiSection.style.display === 'none') {
       aiSection.style.display = 'block';
-      toggleBtn.textContent = '🤖 Hide AI Analysis';
+      toggleBtn.textContent = ' Hide AI Analysis';
       
       if (!this.aiAnalysis) {
         await this.performAIAnalysis();
       }
     } else {
       aiSection.style.display = 'none';
-      toggleBtn.textContent = '🤖 AI Analysis';
+      toggleBtn.textContent = ' AI Analysis';
     }
   }
 
@@ -350,7 +350,7 @@ class AmazonReviewAnalyzer {
     if (analysis.sentiment_analysis) {
       aiHTML += `
         <div class="ra-ai-insight">
-          <strong>📊 Sentiment Analysis:</strong>
+          <strong> Sentiment Analysis:</strong>
           ${analysis.sentiment_analysis.charAt(0).toUpperCase() + analysis.sentiment_analysis.slice(1)}
         </div>
       `;
@@ -359,7 +359,7 @@ class AmazonReviewAnalyzer {
     if (analysis.key_themes && analysis.key_themes.length > 0) {
       aiHTML += `
         <div class="ra-ai-insight">
-          <strong>🏷️ Key Themes:</strong>
+          <strong> Key Themes:</strong>
           ${analysis.key_themes.join(', ')}
         </div>
       `;
@@ -368,7 +368,7 @@ class AmazonReviewAnalyzer {
     if (analysis.quality_insights) {
       aiHTML += `
         <div class="ra-ai-insight">
-          <strong>💡 Quality Insights:</strong>
+          <strong> Quality Insights:</strong>
           ${analysis.quality_insights}
         </div>
       `;
@@ -377,7 +377,7 @@ class AmazonReviewAnalyzer {
     if (analysis.fake_indicators && analysis.fake_indicators.length > 0) {
       aiHTML += `
         <div class="ra-ai-insight">
-          <strong>⚠️ Potential Issues:</strong>
+          <strong> Potential Issues:</strong>
           ${analysis.fake_indicators.join(', ')}
         </div>
       `;
@@ -386,7 +386,7 @@ class AmazonReviewAnalyzer {
     if (analysis.recommendation) {
       aiHTML += `
         <div class="ra-ai-insight">
-          <strong>📝 AI Recommendation:</strong>
+          <strong> AI Recommendation:</strong>
           ${analysis.recommendation}
         </div>
       `;
@@ -399,7 +399,7 @@ class AmazonReviewAnalyzer {
     const aiContentElement = document.getElementById('ai-analysis-content');
     aiContentElement.innerHTML = `
       <div class="ra-ai-insight" style="background: rgba(244,67,54,0.2);">
-        <strong>❌ AI Analysis Unavailable:</strong>
+        <strong> AI Analysis Unavailable:</strong>
         ${error}
       </div>
     `;
@@ -552,7 +552,7 @@ class AmazonReviewAnalyzer {
   if (verifiedPercentage < 30 && avgRating > 4.5) {
     detailsElement.innerHTML += `
       <div class="ra-warning ra-review-warning">
-        ⚠️ High average rating but low verified purchase percentage may indicate suspicious reviews.
+         High average rating but low verified purchase percentage may indicate suspicious reviews.
       </div>
     `;
   }
@@ -768,9 +768,9 @@ class AmazonReviewAnalyzer {
     else scoreElement.classList.add('ra-score-bad');
 
     // Update status
-    if (score >= 80) statusElement.textContent = '✅ Highly Credible';
-    else if (score >= 60) statusElement.textContent = '⚠️ Moderately Credible';
-    else statusElement.textContent = '❌ Low Credibility';
+    if (score >= 80) statusElement.textContent = ' Highly Credible';
+    else if (score >= 60) statusElement.textContent = ' Moderately Credible';
+    else statusElement.textContent = ' Low Credibility';
 
     // Display detailed analysis
     let detailsHTML = `
@@ -789,7 +789,7 @@ class AmazonReviewAnalyzer {
     `;
 
     if (analysis.suspiciousPatterns.length > 0) {
-      detailsHTML += '<div class="ra-warnings"><h4>⚠️ Potential Issues:</h4>';
+      detailsHTML += '<div class="ra-warnings"><h4> Potential Issues:</h4>';
       analysis.suspiciousPatterns.forEach(pattern => {
         detailsHTML += `<div class="ra-warning">${pattern.description}</div>`;
       });
@@ -810,7 +810,7 @@ class AmazonReviewAnalyzer {
               
               const warning = document.createElement('div');
               warning.className = 'ra-review-warning';
-              warning.textContent = '⚠️ Similar to other reviews';
+              warning.textContent = ' Similar to other reviews';
               review.element.prepend(warning);
             }
           });
